@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Clone the code
 
-https://github.com/venkatch668/Angluar6-CustomGrid-Filters.git
+https://github.com/venkatch668/Angular6-InfiniteScrollbar-Searching-sorting-dragdrop.git
 
 ## Expected output 
 
