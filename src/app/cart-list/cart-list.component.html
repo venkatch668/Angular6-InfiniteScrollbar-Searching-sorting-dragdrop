@@ -1,0 +1,75 @@
+
+<div class="cartList">
+  <div class="clheader bg-primary">
+    <h2> Cart List </h2>
+  </div>
+     
+  <div class="clfilters">
+    <div class="container"> 
+      <div class="row">
+        <div class="col-12 col-sm-3">
+          <div class="clSearchInput">
+              <label for="clSearchLabel">Please Search by Title</label>
+            <input type="text" [(ngModel)]="clSearch" (input)="searchList(clSearch)" name="clsearch" placehodler="please Search here"  id="clSearchLabel"/>
+            <span class="sr-only" aria-live="polite"> {{clList.length}} Search Results found </span>
+          </div>
+        </div>
+        <div class="col-12 col-sm-3">
+            <div class="clSearchInput pull-left">
+                <label for="reorderLabel">Re-Order:</label>
+                <input type="checkbox" [(ngModel)]="reorderState" name="reorderLabel" id="reorderid"/>
+            </div>      
+            <div class="clearfix"></div>
+            <p class="small text-primary">Re-ordering Option - please check the check box to disable/enable sort option</p>
+        </div>
+        <div class="col-12 col-sm-3">     
+            <div class="clSearchInput pull-right">
+              <div><label for="clSortyLabel">Sort BY:</label> </div>
+              <select [(ngModel)]="clKeysSelect" name="clkeyselect" id="clSortyLabel" [disabled]="reorderState">
+                <option *ngFor="let s of clKeys">{{s}}</option>
+              </select>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Cart List Filters | end -->
+
+  <div class="container"> 
+  <div class="clCards">
+    <div class="clcard">
+      <p> {{clList.length}} Search Results found </p>
+        <div id="infinite-scroller"
+        appCartListInfiniteScroller
+        scrollPerecnt="70"
+        immediateCallback="true"
+        [scrollCallback]="scrollCallback">
+        <div class="grid reorder" *ngIf="reorderState">
+          <ng-container *ngFor="let item of clList let i= index">
+            <div class="col-sm-6 col-md-2 nopad"  (drop)="drop($event,i,item)" (dragover)="allowDrop($event)">            
+              <div class="card" draggable="true" attr.id="drag{{i}}" (dragstart)="drag($event,i,item)">
+                <div class="card-body">
+                    <img src="../../assets/servicenow.jpg" draggable="false" class="img-responsive" alt="service now"/>
+                  <h3 class="card-title">{{i}} -- {{item.title}}</h3>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+      </div>
+      <div class="grid sortby" *ngIf="!reorderState">
+        <ng-container *ngFor="let item of clList | orderBy:clKeysSelect; let i= index">
+            <div class="col-6 col-sm-2 nopad"  (drop)="drop($event,i,item)" (dragover)="allowDrop($event)">            
+              <div class="card" draggable="true" attr.id="drag{{i}}" (dragstart)="drag($event,i,item)">
+                <div class="card-body">
+                    <img src="../../assets/servicenow.jpg" draggable="false" class="img-responsive" alt="service now"/>
+                   <h3 class="card-title">{{i}} -- {{item.title}}</h3>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+</div>

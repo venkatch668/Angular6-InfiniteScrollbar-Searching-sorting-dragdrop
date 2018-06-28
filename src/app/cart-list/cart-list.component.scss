@@ -1,0 +1,68 @@
+.cartList{
+    select[disabled]{
+        opacity:0.5;
+    }
+    .card-title{
+        text-transform: capitalize;
+        font-size: 12px;
+    }
+
+    .clheader{
+        h2{
+            color: #fff;
+            text-align: center;
+            margin: 0px;
+            padding: 6px;
+        }
+    }
+    .card-body{
+        img{
+            width:100%;
+        }
+    }
+    .grid{
+        width:100%;
+        border: 1px solid #ccc;
+        padding:10px;
+        float:left;        
+    }
+    .clfilters{
+        background: rgba(0, 0, 0, 0.05);
+        width: 100%;
+        float: left;
+        padding: 15px;
+        margin-bottom: 15px;
+        .clSearchInput{
+            width:220px;
+            input,select{
+                width:80%;
+                text-transform: capitalize;
+                min-height:20px;
+            }
+            input[type='checkbox']{
+                width:auto;
+            }
+        }
+
+    }
+    #infinite-scroller {
+        height: 70vh;
+        width: 100%;
+        overflow: scroll;
+        padding: 0;
+        list-style: none;
+      }
+    .clCards{
+        .clcard{
+            .card{
+                border:1px solid #ccc;
+                margin:10px;
+                min-height:200px;
+                padding:10px;
+            }
+        }
+    }
+}
+.nopad{
+    padding:0px!important;
+}
